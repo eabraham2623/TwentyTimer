@@ -1,0 +1,43 @@
+*
+{
+	font-family: Montserrat, san-serif;
+}
+body
+{
+	background-color: #f6f6f6;
+	
+}
+h1
+{
+	text-align: center;
+	box-shadow: 4px 4px 10px gray;
+	margin: 0px
+	
+}
+#block
+{
+	font-size: 100%
+	
+}
+#bullets
+{
+	list-style-type: none;
+	text-align: center;
+	
+	
+}
+#bullets li
+{
+	display: inline-block;
+	
+	
+}
+img:hover
+{
+	opacity: .8;
+}
+iframe
+{
+	margin: 20px 20px;
+}
+

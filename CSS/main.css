@@ -1,0 +1,72 @@
+body
+{
+
+	background: gray;
+	font-family: comic sans ms;
+}
+h1
+{
+	color: red;
+	
+	outline-width: thick;
+	outline-color: black;
+}
+hr
+{
+	border-color: black;
+}
+header
+{
+	background: blue;
+}
+header h1
+{
+	margin: 0;
+}
+nav ul
+{
+	margin: 0;
+}
+nav ul li
+{
+	display: inline-block;
+	list-style: none;
+}
+a
+{
+	color: yellow;
+}
+p
+{
+	padding: 20px;
+}
+#test
+{
+	color: blue;
+}
+#line
+{
+	border-color: green;
+}
+.row
+{
+	
+}	
+.col
+{
+	background: #333;
+	border-radius: 5px;
+	color: white;
+	padding: 10px .5%;
+	float: left;
+	margin: .5%;
+	width: 31%;
+}
+footer
+{
+	clear: both;	
+}
+/* what is overriden in a sense is the last thing?
+id is one thing
+class can be multiple things
+*/

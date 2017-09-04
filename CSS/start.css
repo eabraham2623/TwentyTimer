@@ -1,0 +1,81 @@
+#left
+{
+	background-color: yellow;
+}
+#middle
+{
+	background-color: orange;
+}
+#right
+{
+	background-color: blue;
+}
+
+#colon
+{
+	text-align: right;
+}
+#tableContainer
+{
+	background-color: yellow;
+	text-align: center;
+	border: 1px solid #999;
+	padding: 10px;
+	
+}
+.info
+{
+	font-size: 80px;
+}
+.col-centered
+{
+    float: none;
+    margin: 0 auto;
+}
+iframe
+{
+	display: none;
+}
+#singlebutton
+{
+	margin-top: 10px;
+	width: 8em;	
+}
+#soundBtn
+{
+	margin-top: 10px;
+	width: 8em;
+}
+span
+{
+	margin-left: 35px;
+}
+#soundBtnText
+{
+	margin-left: 0px;
+}
+#minutes_label
+{
+	padding-right: 80px;
+}
+#speaker
+{
+	width: 25px;
+	padding-left: 5px;
+}
+@media only screen and (min-width: 1200px) 
+{ 
+	#singlebutton
+	{
+		margin-left: 520px;			
+	}
+
+}
+@media only screen and (min-width: 1200px) 
+{ 
+	#soundBtn
+	{
+		margin-left: 520px;			
+	}
+
+}

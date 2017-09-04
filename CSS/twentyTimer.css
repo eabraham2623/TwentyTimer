@@ -1,0 +1,26 @@
+#bg
+{ 
+  background-image: url(clock.jpg);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: -10;
+}
+#bg-overlay
+{
+	position: absolute;
+	background-color: rgba(0,0,0,0.6);
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -5;
+}
+h1
+{
+	color: white;
+	text-align: center;
+}

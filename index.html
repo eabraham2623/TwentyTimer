@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Twenty Timer</title>
+		<meta charset = "utf-8">
+		<meta name  = "viewport" content = "width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href = "CSS/20Timer.css" rel = "stylesheet" />
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<audio id="alert-music" src="Music/Kids.mp3" preload="auto"></audio>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	</head>
+	<body>
+		<div class = "jumbotron" id = "box">
+			<div class = "container">
+				<div class = "row">
+					<div class = "col-md-8 col-md-offset-2">
+						<table id = "tableContainer">
+							<tr>
+								<td colspan = "3" class = "info">Twenty Timer</td>
+							</tr>
+							<tr class = "info">
+								<td id = "minutes">20</td>
+								<td>:</td>
+								<td id = "seconds">00</td>
+							</tr>
+							<tr id = "labels">
+								<td id = "minutes_label">Minutes</td>
+								<td></td>
+								<td>Seconds</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class = "row">
+					<div class="col-md-8 col-md-offset-2  text-center"> 
+						<button id="singlebutton-start" name="singlebutton" class="btn btn-primary  btn-lg" onclick = "startTimer((60*20)-1); this.disabled=true; statusChange();">Start Timer</button> 
+					</div>				
+				</div>				
+				<div class = "row">
+					<div class="col-md-8 col-md-offset-2 text-center"> 
+						<button id="soundBtn" name="singlebutton" class="btn btn-primary btn-lg" onclick = "changeName();"><span id = "soundBtnText">Sound On</span><img id = "speaker" src = "Images/Speaker.png" ></button> 
+					</div>
+				<br>
+				</div>
+			</div>
+			<footer>
+				<a href="https://icons8.com/icon/14172/Speaker">Speaker icon credits</a>
+				</br>
+				<a href="https://icons8.com/icon/644/Mute">Mute icon credits</a>
+			</footer>
+		</div>
+		<script>
+			function play() 
+			{
+				var audio = document.getElementById("alert-music");
+				audio.play();
+				//setTimeout(function(){alert("Extraction is finished");},100);
+				setTimeout(function(){ audio.currentTime = 0; audio.pause(); }, 10000);
+			}
+		</script>
+		<script>
+			function statusChange()
+			{
+				var buttonText = document.getElementById("singlebutton-start");
+				buttonText.innerHTML = "Timer Started!"
+			}
+		</script>
+		<script>	
+			function now() 
+			{
+			  return ((new Date()).getTime());
+			}
+		</script>
+		<script>
+			var startTime, countAmt, interval;
+			
+			function tick() 
+			{
+				var elapsed = now() - startTime;
+				var cnt = countAmt - elapsed;
+				var elementSec = document.getElementById("seconds");
+				var elementMin = document.getElementById("minutes");
+				var elementButton = document.getElementById("singlebutton-start");
+				var colon = document.getElementById("colon");
+				var soundbuttonName = document.getElementById("soundBtnText");
+						
+						
+				if (cnt > 0) 
+				{
+					var se = Math.round(cnt / 1000) % 60;
+					var realSec =  Math.round(cnt / 1000);
+					var min = realSec / 60;
+						
+					if (se < 10)
+					{
+						elementSec.innerHTML = "0"+se;
+								
+					}
+					else
+					{
+						elementSec.innerHTML = se;
+					}
+					if (se == 0)
+					{
+						
+						//elementMin.innerHTML = "0"+Math.ceiling(cnt/60000);
+						if (Math.ceil(min) < 10)
+						{
+							elementMin.innerHTML = "0"+Math.ceil(min);
+							//elementMin.appendChild(colon);	
+						}
+						else
+						{
+							elementMin.innerHTML = Math.ceil(min);
+							//elementMin.appendChild(colon);	
+						}
+							
+					}
+					else
+					{
+						//elementMin.innerHTML = Math.floor(cnt/60000);
+						if (Math.floor(min) < 10)
+						{
+							elementMin.innerHTML = "0"+Math.floor(min);
+							//elementMin.appendChild(colon);	
+						}
+						else
+						{
+							elementMin.innerHTML = Math.floor(min);
+							//elementMin.appendChild(colon);	
+						}
+							
+					}
+						
+				} 
+				else 
+				{
+					elementSec.innerHTML = "00";
+					if (soundbuttonName.innerHTML == "Sound On")
+					{						
+						play();						
+					}
+					else
+					{
+						setTimeout(function(){alert("20 Minutes Are Up!");},100);
+					}
+					//document.getElementById('alert-music').play();
+					elementButton.innerHTML = "Start Timer";
+					elementButton.disabled = false;
+					clearInterval(interval);
+				  }
+			}
+			</script>
+			<script>
+				var colon = document.getElementById("colon");
+				function startTimer(secs) 
+				{
+				  clearInterval(interval);
+				  
+				  document.getElementById("seconds").innerHTML = secs % 60;
+				  document.getElementById("minutes").innerHTML = "19";
+				  //document.getElementById("minutes").appendChild(colon);
+				  countAmt = secs * 1000;
+				  startTime = now();
+				  interval = setInterval(tick, 1000); 
+				  
+				}
+			</script>
+			<script>
+				function changeName()
+				{
+					var soundbuttonName = document.getElementById("soundBtnText");
+					var imgSpeakerOn = new Image();
+					var imgSpeakerOff = new Image();
+					var speaker = document.getElementById("speaker");
+					imgSpeakerOn.src = "Images/Speaker.png";
+					imgSpeakerOff.src = "Images/MUTE.png";
+					
+					if (soundbuttonName.innerHTML == "Sound On")
+					{
+						soundbuttonName.innerHTML = "Sound Off";
+						speaker.src = imgSpeakerOff.src;
+						//soundbuttonName.appendChild(img);
+					}
+					else
+					{
+						soundbuttonName.innerHTML = "Sound On";
+						speaker.src = imgSpeakerOn.src;
+						//soundbuttonName.appendChild(img);
+					}
+				}
+			</script>
+	</body>	
+</html>
